@@ -52,6 +52,8 @@ CatalystX::Dispatcher::AsGraph - Create a graph from Catalyst dispatcher
 CatalystX::Dispatcher::AsGraph create a graph for a Catalyst application
 using his dispatcher.
 
+At the time, only private actions are graphed.
+
 =head1 AUTHOR
 
 Franck Cuny E<lt>franck@lumberjaph.netE<gt>
