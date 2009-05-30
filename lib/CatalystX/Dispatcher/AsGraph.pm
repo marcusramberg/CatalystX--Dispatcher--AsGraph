@@ -23,14 +23,14 @@ class CatalystX::Dispatcher::AsGraph {
         my $name = $prefix . $parent->getNodeValue || '';
         my $node = $self->graph->add_node($name);
 
-        for my $child ( $parent->getAllChildren ) {
-            my $child_node = $self->_new_node( $child, $name . ' -> ' );
-            $self->graph->add_edge( $node, $child_node );
-        }
         my $actions = $parent->getNodeValue->actions;
         for my $action ( keys %{$actions} ) {
             next if ( ( $action =~ /^_.*/ ) );
             $self->graph->add_edge( $node, "[action] " . $action);
+        }
+        for my $child ( $parent->getAllChildren ) {
+            my $child_node = $self->_new_node( $child, $name . ' -> ' );
+            $self->graph->add_edge( $node, $child_node );
         }
         return $node;
     }
